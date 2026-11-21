@@ -7,9 +7,25 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with: {distribution: temurin, java-version: 17}
-      - run: chmod +x gradlew
-      - run: ./gradlew assembleDebug --no-daemon
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.10.2
+      - name: Build
+        run: |
+          ls -la
+          if [ -f gradlew ]; then
+            chmod +x gradlew
+            ./gradlew assembleDebug --no-daemon --stacktrace
+          else
+            D=$(dirname "$(find . -name gradlew | head -n 1)")
+            if [ -n "$D" ] && [ "$D" != "." ]; then
+              cd "$D" && chmod +x gradlew && ./gradlew assembleDebug --no-daemon --stacktrace
+            else
+              gradle assembleDebug --no-daemon --stacktrace
+            fi
+          fi
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: Sayloc-debug-apk
           path: "**/build/outputs/apk/debug/*.apk"
