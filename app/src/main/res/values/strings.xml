@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sayloc</string>
+    <string name="app_tagline">Say it. Lock it.</string>
+    <string name="device_admin_label">Sayloc Screen Lock</string>
+    <string name="device_admin_description">Allows Sayloc to lock your phone instantly when you speak your voice command, shake your phone, or tap Lock Now. Uses force-lock only.</string>
+    <string name="qs_tile_lock_label">Sayloc Lock</string>
+    <string name="notif_channel_listening">Voice Listening Service</string>
+    <string name="notif_channel_listening_desc">Shows when Sayloc is actively listening for your voice commands on-device.</string>
+    <string name="notif_channel_alerts">Sayloc Alerts &amp; Find My Phone</string>
+    <string name="notif_channel_alerts_desc">High-priority alerts for Find My Phone and boot resume reminders.</string>
+</resources>
